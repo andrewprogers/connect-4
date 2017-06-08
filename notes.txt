@@ -1,0 +1,53 @@
+Playing connect four
+
+ConnectFourGame
+  state
+    Player 1
+    Player 2
+    Board
+    player_names
+
+  behavior
+    new_game
+    player takes a turn
+      selecting a valid column
+    loop until win condition? or board full
+    score - let player know they've won
+
+    validate column selection
+    validate player name
+
+    printing game state
+
+Player
+  state
+    name
+      must be unique
+    color
+    wins
+
+  behavior
+    ?
+
+Board
+  state
+    columns
+
+  behavior
+    check for win?
+    check for full?
+    display board
+
+Column
+  state
+    stack of pieces
+    full?
+
+  behavior
+    add piece
+
+Piece
+  state
+    color
+  behavior
+    ?
