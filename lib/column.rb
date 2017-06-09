@@ -15,6 +15,14 @@ class Column
     @stack << piece
   end
 
+  def row(row_num)
+    if [*(1..@stack.length)].include?(row_num)
+      @stack[row_num - 1]
+    else
+      nil
+    end
+  end
+
   def row_to_s(row)
     piece = @stack[row - 1]
     if piece.nil?

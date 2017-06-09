@@ -41,13 +41,16 @@ Board
 Column
   state
     stack of pieces
-    full?
 
   behavior
+    full?
     add piece
+    row_to_s
 
 Piece
   state
     color
+    color_code
+    character
   behavior
-    ?
+    print piece

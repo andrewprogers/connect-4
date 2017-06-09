@@ -51,6 +51,20 @@ describe "Column" do
     end
   end
 
+  describe "#row(n)" do
+    it "returns a Piece if there is a piece at index (n - 1)" do
+      expect(one.row(1)).to be_instance_of(Piece)
+      expect(five.row(3)).to be_instance_of(Piece)
+      expect(six.row(6)).to be_instance_of(Piece)
+    end
+
+    it "returns nil if there is no piece at index (n - 1)" do
+      expect(five.row(6)).to be_nil
+      expect(six.row(7)).to be_nil
+      expect(six.row(0)).to be_nil
+    end
+  end
+
   describe "#row_to_s" do
     it "returns ' ' when the row is empty" do
       expect(one.row_to_s(2)).to eq(' ')
