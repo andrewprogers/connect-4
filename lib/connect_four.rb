@@ -1,19 +1,15 @@
 require_relative "Board"
 require_relative "Player"
 require_relative "Piece"
-
-require "pry"
-#require_relative "Piece"
+require_relative "player_creator"
 
 class ConnectFourGame
-  AVAILABLE_COLORS = ["yellow", "red"]
 
   def initialize
-    @colors = AVAILABLE_COLORS.dup.shuffle!
-    @player1 = createPlayer
-    @player2 = createPlayer
+    player_creator = PlayerCreator.new()
+    @player1 = player_creator.newPlayer
+    @player2 = player_creator.newPlayer
     @board = Board.new
-
     game_loop
   end
 
@@ -24,33 +20,6 @@ class ConnectFourGame
     color = @colors.pop
 
     Player.new(name, color, char)
-  end
-
-  def get_player_name
-    loop do
-      print "Enter a name for player "
-      puts @player1.nil? ? "one: " : "two: "
-      input = gets.chomp
-      return input if @player1.nil? || @player1.name != input
-      puts "That name is already taken!!!"
-    end
-  end
-
-  def get_player_char
-    loop do
-      print "Enter a single character for player "
-      puts @player1.nil? ? "one: " : "two: "
-      input = gets.chomp
-      unless input.length == 1
-        puts "One character only!"
-        next
-      end
-      unless @player1.nil? || @player1.character != input
-        puts "That character is already taken!!!"
-        next
-      end
-      return input
-    end
   end
 
   def game_loop
