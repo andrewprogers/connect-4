@@ -1,7 +1,10 @@
 require_relative "../lib/column"
 
 describe "Column" do
-  let(:red_piece) { Piece.new('red', "@") }
+  let(:red_piece)  do
+    tim = Player.new("Tim", "red", "@")
+    Piece.new(tim)
+  end
   let(:empty) { Column.new() }
   let(:one) {
     c = Column.new()

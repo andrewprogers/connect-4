@@ -1,8 +1,5 @@
-class PieceCreationError < ArgumentError
-end
 
 class Piece
-  VALID_COLORS = ['red', 'yellow']
   COLOR_CODES = {
     'red' => 31,
     'yellow' => 33
@@ -10,9 +7,10 @@ class Piece
 
   attr_reader :color
 
-  def initialize(color, character)
-    @color = validateColor(color)
-    @character = validateCharacter(character)
+  def initialize(player)
+    @player = player
+    @color = player.color
+    @character = player.character
   end
 
   def to_s
@@ -22,16 +20,5 @@ class Piece
   private
     def color_code
       COLOR_CODES[@color]
-    end
-
-    def validateColor(color)
-      color = color.downcase
-      raise PieceCreationError unless VALID_COLORS.include?(color)
-      color
-    end
-
-    def validateCharacter(char)
-      raise PieceCreationError unless char.length == 1
-      char
     end
 end

@@ -1,8 +1,14 @@
 require_relative "../lib/board"
 
 describe "Board" do
-  let(:yellow) { Piece.new("yellow", "@") }
-  let(:red) { Piece.new("red", "X") }
+  let(:yellow) do
+    bob = Player.new("Bob", "yellow", "@")
+    Piece.new(bob)
+  end
+  let(:red) do
+    tim = Player.new("Tim", "red", "X")
+    Piece.new(tim)
+  end
   let(:empty_board) { Board.new() }
   let(:mixed_board) {
     b = Board.new()

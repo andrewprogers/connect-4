@@ -1,25 +1,23 @@
 require_relative "../lib/piece"
+require_relative "../lib/player"
 
 describe "Piece" do
-  let(:yellow) { Piece.new("yellow", "@") }
-  let(:red) { Piece.new("red", "X") }
+
+
+  let(:yellow) do
+    bob = Player.new("Bob", "yellow", "@")
+    Piece.new(bob)
+  end
+
+  let(:red) do
+    tim = Player.new("Tim", "red", "X")
+    Piece.new(tim)
+  end
 
   describe "#initialize" do
-    it "creates an instance of Piece, taking color and character" do
+    it "creates an instance of Piece, taking a Player" do
       expect(yellow).to be_instance_of(Piece)
       expect(red).to be_instance_of(Piece)
-    end
-
-    it "throws an error if is not red / yellow" do
-      expect {
-        Piece.new('green', "@")
-      }.to raise_error(PieceCreationError)
-    end
-
-    it "throws an error if character is longer than 1 char" do
-      expect {
-        Piece.new('red', "@@")
-      }.to raise_error(PieceCreationError)
     end
 
     it "has a color reader" do
