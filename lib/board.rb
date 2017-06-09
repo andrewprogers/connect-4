@@ -46,8 +46,10 @@ class Board
         return cell_color if upwards_win?(row, col)
         return cell_color if right_win?(row, col)
         return cell_color if diagonal_up_win?(row, col)
+        return cell_color if diagonal_down_win?(row, col)
       end
     end
+    return false
   end
 
   private
@@ -92,6 +94,19 @@ class Board
     (1..3).each do |num|
       return false if column(c + num).nil?
       next_cell = column(c + num).row(r + num)
+      return false if next_cell.nil?
+      return false unless this_cell.color == next_cell.color
+    end
+    return true
+  end
+
+  def diagonal_down_win?(r, c)
+    this_cell = column(c).row(r)
+    return false if this_cell.nil?
+
+    (1..3).each do |num|
+      return false if column(c + num).nil?
+      next_cell = column(c + num).row(r - num)
       return false if next_cell.nil?
       return false unless this_cell.color == next_cell.color
     end

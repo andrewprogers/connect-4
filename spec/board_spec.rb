@@ -164,7 +164,6 @@ describe "Board" do
         2.times { |idx| diagonal_up_winner_one.column(idx + 3).add_piece(red) }
         1.times { |idx| diagonal_up_winner_one.column(idx + 4).add_piece(red) }
         4.times { |idx| diagonal_up_winner_one.column(idx + 1).add_piece(yellow) }
-        diagonal_up_winner_one.print_board
 
         diagonal_up_winner_two = Board.new()
         3.times { |idx| diagonal_up_winner_two.column(idx + 1).add_piece(red) }
@@ -174,17 +173,37 @@ describe "Board" do
         2.times { |idx| diagonal_up_winner_two.column(idx + 5).add_piece(yellow) }
         1.times { |idx| diagonal_up_winner_two.column(idx + 6).add_piece(yellow) }
         3.times { |idx| diagonal_up_winner_two.column(idx + 3).add_piece(red) }
-        diagonal_up_winner_two.print_board
 
         expect(diagonal_up_winner_one.winner).to eq("yellow")
         expect(diagonal_up_winner_two.winner).to eq("red")
       end
 
-      it "returns winner color if there is a diagonal down winner"
+      it "returns winner color if there is a diagonal down winner" do
+        diagonal_down_winner_one = Board.new()
+        3.times { |idx| diagonal_down_winner_one.column(idx + 2).add_piece(red) }
+        2.times { |idx| diagonal_down_winner_one.column(idx + 2).add_piece(red) }
+        1.times { |idx| diagonal_down_winner_one.column(idx + 2).add_piece(red) }
+        4.times { |idx| diagonal_down_winner_one.column(idx + 2).add_piece(yellow) }
+
+        diagonal_down_winner_two = Board.new()
+        3.times { |idx| diagonal_down_winner_two.column(idx + 1).add_piece(red) }
+        1.times { |idx| diagonal_down_winner_two.column(idx + 4).add_piece(yellow) }
+        3.times { |idx| diagonal_down_winner_two.column(idx + 5).add_piece(red) }
+        3.times { |idx| diagonal_down_winner_two.column(idx + 2).add_piece(yellow) }
+        2.times { |idx| diagonal_down_winner_two.column(idx + 2).add_piece(yellow) }
+        1.times { |idx| diagonal_down_winner_two.column(idx + 2).add_piece(yellow) }
+        3.times { |idx| diagonal_down_winner_two.column(idx + 3).add_piece(red) }
+
+        expect(diagonal_down_winner_one.winner).to eq("yellow")
+        expect(diagonal_down_winner_two.winner).to eq("red")
+      end
     end
 
     context "when there is not a winning player" do
-      it "returns false"
+      it "returns false" do
+        expect(empty_board.winner).to eq(false)
+        expect(mixed_board.winner).to eq(false)
+      end
     end
   end
 end
