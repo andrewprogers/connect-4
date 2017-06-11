@@ -30,7 +30,6 @@ class ConnectFourGame
   end
 
   def turn(player)
-    system "clear" or system "cls"
     @board.print_board
     print "It is #{player.name}'s turn. Please select a column(1-7): "
     selection = get_column_choice
@@ -62,6 +61,11 @@ class ConnectFourGame
 
   def score_report
     @board.print_board
+    if @board.winner
+      puts "#{@board.winner.name} is the winner!!!"
+    else
+      puts "Tie game! No winner!"
+    end
   end
 end
 

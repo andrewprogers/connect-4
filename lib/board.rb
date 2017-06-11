@@ -1,7 +1,7 @@
 require_relative "column"
 
 class Board
-  attr_reader :columns
+  attr_reader :columns, :winner
 
   def initialize
     @columns = Array.new(7) { Column.new() }
@@ -24,6 +24,7 @@ class Board
   end
 
   def print_board
+    system "clear" or system "cls"
     top = "┏━━━┯━━━┯━━━┯━━━┯━━━┯━━━┯━━━┓\n"
     row_sep = "┠───┼───┼───┼───┼───┼───┼───┃\n"
     bottom = <<~EOS
