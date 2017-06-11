@@ -5,7 +5,7 @@ class Piece
     'yellow' => 33
   }
 
-  attr_reader :color
+  attr_reader :color, :player
 
   def initialize(player)
     @player = player

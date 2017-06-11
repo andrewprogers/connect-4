@@ -143,8 +143,8 @@ describe "Board" do
         3.times { |idx| h_win_two.column(idx + 2).add_piece(yellow) }
         2.times { h_win_two.column(5).add_piece(yellow)}
 
-        expect(h_win_one.winner).to eq("red")
-        expect(h_win_two.winner).to eq("yellow")
+        expect(h_win_one.winner).to eq(red.player)
+        expect(h_win_two.winner).to eq(yellow.player)
       end
 
       it "it returns winner color if there is a vertical winner" do
@@ -159,9 +159,9 @@ describe "Board" do
         1.times { v_win_three.column(7).add_piece(red) }
         4.times { v_win_three.column(7).add_piece(yellow) }
 
-        expect(v_win_one.winner).to eq("red")
-        expect(v_win_two.winner).to eq("yellow")
-        expect(v_win_three.winner).to eq("yellow")
+        expect(v_win_one.winner).to eq(red.player)
+        expect(v_win_two.winner).to eq(yellow.player)
+        expect(v_win_three.winner).to eq(yellow.player)
       end
 
       it "it returns winner color if there is a diagonal up winner" do
@@ -180,8 +180,8 @@ describe "Board" do
         1.times { |idx| diagonal_up_winner_two.column(idx + 6).add_piece(yellow) }
         3.times { |idx| diagonal_up_winner_two.column(idx + 3).add_piece(red) }
 
-        expect(diagonal_up_winner_one.winner).to eq("yellow")
-        expect(diagonal_up_winner_two.winner).to eq("red")
+        expect(diagonal_up_winner_one.winner).to eq(yellow.player)
+        expect(diagonal_up_winner_two.winner).to eq(red.player)
       end
 
       it "returns winner color if there is a diagonal down winner" do
@@ -200,8 +200,8 @@ describe "Board" do
         1.times { |idx| diagonal_down_winner_two.column(idx + 2).add_piece(yellow) }
         3.times { |idx| diagonal_down_winner_two.column(idx + 3).add_piece(red) }
 
-        expect(diagonal_down_winner_one.winner).to eq("yellow")
-        expect(diagonal_down_winner_two.winner).to eq("red")
+        expect(diagonal_down_winner_one.winner).to eq(yellow.player)
+        expect(diagonal_down_winner_two.winner).to eq(red.player)
       end
     end
 
