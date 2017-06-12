@@ -26,7 +26,7 @@ class Board
   def print_board
     system "clear" or system "cls"
     top = "┏━━━┯━━━┯━━━┯━━━┯━━━┯━━━┯━━━┓\n"
-    row_sep = "┠───┼───┼───┼───┼───┼───┼───┃\n"
+    row_sep = "┠───┼───┼───┼───┼───┼───┼───┨\n"
     bottom = <<~EOS
       ╋━━━┷━━━┷━━━┷━━━┷━━━┷━━━┷━━━╋
       ┃                           ┃
